@@ -202,6 +202,44 @@ class algorithmVisualiser{
           self.dataSet.swap(minIdx, i);
         }
       }},
+	  
+	  {name: "Merge Sort". algorithm: async () => {
+		function merge(leftArr, rightArr) {
+			var sortedArr = []; //Declares array that will store sorted values
+
+			while (leftArr.length != 0 && rightArr.length != 0) {
+				if (leftArr[0] <= rightArr[0]) {
+				  sortedArr.push(leftArr.shift()); //Adds first element of leftArr to sortedArr, and removes from leftArr
+				} else {
+				  sortedArr.push(rightArr.shift()); //Adds first element of rightArr to sortedArr, and removes from rightArr
+				}
+			}
+
+			while (leftArr.length != 0) {
+				sortedArr.push(leftArr.shift()); //Ensures any unsorted data from leftArr is pushed to main array
+			}
+
+			while (rightArr.length != 0) {
+				sortedArr.push(rightArr.shift()); //Ensures any unsorted data from rightArr is pushed to main array
+			}
+
+			return sortedArr; //Returns the sorted array
+		}
+
+		function mergeSort(arr) {
+		  if (arr.length == 1) {
+			return arr; //Returns array if there is only one element
+		  } else {
+			var mid = arr.length / 2; //Defines midpoint
+			var leftArr = arr.slice(0, mid); //Defines left side of array
+			var rightArr = arr.slice(mid, arr.length); //Defines right side of array
+
+			return merge(mergeSort(leftArr), mergeSort(rightArr)); //Returns sorted array
+		  }
+		}
+
+		console.log(mergeSort(self.dataSet.data));
+	  }},
 
     ];
   }
