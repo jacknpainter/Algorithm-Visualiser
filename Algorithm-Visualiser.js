@@ -207,7 +207,7 @@ class algorithmVisualiser{
 		function merge(leftArr, rightArr) {
 			var sortedArr = []; //Declares array that will store sorted values
 
-			while (leftArr.length != 0 && rightArr.length != 0) {
+			while (leftArr.length > 0 && rightArr.length > 0) {
 				if (leftArr[0] <= rightArr[0]) {
 				  sortedArr.push(leftArr.shift()); //Adds first element of leftArr to sortedArr, and removes from leftArr
 				} else {
@@ -215,11 +215,11 @@ class algorithmVisualiser{
 				}
 			}
 
-			while (leftArr.length != 0) {
+			while (leftArr.length > 0) {
 				sortedArr.push(leftArr.shift()); //Ensures any unsorted data from leftArr is pushed to main array
 			}
 
-			while (rightArr.length != 0) {
+			while (rightArr.length > 0) {
 				sortedArr.push(rightArr.shift()); //Ensures any unsorted data from rightArr is pushed to main array
 			}
 
